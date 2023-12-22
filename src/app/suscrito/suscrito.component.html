@@ -1,0 +1,43 @@
+<input id="id" type="text" [formControl]="id" hidden />
+<label for="nombreCompleto">Nombre Completo: </label>
+<input id="nombreCompleto" type="text" [formControl]="nombreCompleto" />
+<label for="correo">Correo electrónico: </label>
+<input id="correo" type="text" [formControl]="correo" />
+<!-- Angular 17 -->
+@if (btnNuevoModificar == 1) {
+<button type="button" (click)="addNewDato()">Registrar nuevo</button>
+} @else {
+<button type="button" (click)="updateDato()">Modificar</button>
+}
+<!-- <form ngSubmit="addNewDato()">
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+</form> -->
+
+<p>LISTA DE suscritos</p>
+
+<ul class="list-group">
+  @for (m of suscritos; track m.id) {
+  <li class="list-group-item">
+    {{ m.nombreCompleto }} - {{ m.correo }}
+    <button (click)="updateName(m.id, m.nombreCompleto, m.correo)">
+      Modificar
+    </button>
+    <button (click)="deleteDato(m.id)">Borrar</button>
+  </li>
+  }
+  <!-- <li class="list-group-item">An item</li>
+  <li class="list-group-item">A second item</li>
+  <li class="list-group-item">A third item</li>
+  <li class="list-group-item">A fourth item</li>
+  <li class="list-group-item">And a fifth one</li> -->
+</ul>
